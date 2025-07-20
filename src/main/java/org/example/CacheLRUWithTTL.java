@@ -3,18 +3,18 @@ package org.example;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class LRUCacheWithTTL<K, V> {
+public class CacheLRUWithTTL<K, V> {
     private final int capacity;
     private final long ttlMillis;
     private final Map<K, CacheEntry<V>> map;
 
-    public LRUCacheWithTTL(int capacity, long ttlMillis) {
+    public CacheLRUWithTTL(int capacity, long ttlMillis) {
         this.capacity = capacity;
         this.ttlMillis = ttlMillis;
         this.map = new LinkedHashMap<>(capacity, 0.75f, true) {
             @Override
             protected boolean removeEldestEntry(Map.Entry<K, CacheEntry<V>> eldest) {
-                return size() > LRUCacheWithTTL.this.capacity;
+                return size() > CacheLRUWithTTL.this.capacity;
             }
         };
     }
@@ -62,7 +62,7 @@ public class LRUCacheWithTTL<K, V> {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        LRUCacheWithTTL<Integer, String> cache = new LRUCacheWithTTL<>(2, 3000);
+        CacheLRUWithTTL<Integer, String> cache = new CacheLRUWithTTL<>(2, 3000);
 
         cache.putValue(1, "One");
         Thread.sleep(1000);

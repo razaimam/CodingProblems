@@ -4,7 +4,7 @@ package org.example;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TTLCache<K, V> {
+public class CacheTTL<K, V> {
     private final long ttlMillis;
     private final Map<K, CacheEntry<V>> map;
 
@@ -22,7 +22,7 @@ public class TTLCache<K, V> {
         }
     }
 
-    public TTLCache(long ttlMillis) {
+    public CacheTTL(long ttlMillis) {
         this.ttlMillis = ttlMillis;
         this.map = new HashMap<>();
     }
@@ -55,7 +55,7 @@ public class TTLCache<K, V> {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        TTLCache<Integer, String> cache = new TTLCache<>(3000);
+        CacheTTL<Integer, String> cache = new CacheTTL<>(3000);
 
         // Test case 1: Basic put and get within TTL
         cache.put(1, "One");

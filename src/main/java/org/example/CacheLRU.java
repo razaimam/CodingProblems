@@ -3,16 +3,16 @@ package org.example;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class LRUCache<K, V> {
+public class CacheLRU<K, V> {
     private final int capacity;
     private final Map<K, V> map;
 
-    public LRUCache(int capacity) {
+    public CacheLRU(int capacity) {
         this.capacity = capacity;
         this.map = new LinkedHashMap<>(capacity, 0.75f, true) {
             @Override
             protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
-                return size() > LRUCache.this.capacity;
+                return size() > CacheLRU.this.capacity;
             }
         };
     }
