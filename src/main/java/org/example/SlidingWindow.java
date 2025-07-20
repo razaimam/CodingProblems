@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -107,7 +108,7 @@ public class SlidingWindow {
         // Expand the window character by character using 'right'.
         for (int right = 0; right < s.length(); right++) {
             char c = s.charAt(right);
-
+            Character.toUpperCase(c);
             // If we've seen this character before *and* it's inside the current window,
             // move 'left' just past its previous occurrence so the window becomes distinct again.
             if (charToIndex.containsKey(c)) {
@@ -122,6 +123,46 @@ public class SlidingWindow {
             maxLength = Math.max(maxLength, right - left + 1);
         }
 
+
         return maxLength;
+    }
+
+    public int lengthOfLongestSubstringUsingArrayASCII(String s) {
+        int[] lastIndex = new int[128];
+        int maxLen = 0, start = 0;
+        Arrays.fill(lastIndex, -1);
+        for (int end = 0; end < s.length(); end++) {
+            char c = s.charAt(end);
+            //int index =  Character.toUpperCase(c) - 'A';
+            start = Math.max(start, lastIndex[c] + 1);
+            maxLen = Math.max(maxLen, end - start + 1);
+            lastIndex[c] = end;
+        }
+        return maxLen;
+    }
+
+
+    public int lengthOfLongestSubstringWithoutFill(String s) {
+        final int[] seenAt = new int[128];
+        int gen = 1;
+        // instead of fill, bump generation
+        if (++gen == 0) {
+            // wrap-around: reset
+            Arrays.fill(seenAt, 0);
+            gen = 1;
+        }
+        int start = 0, max = 0;
+        char[] cs = s.toCharArray();
+        for (int i = 0; i < cs.length; i++) {
+            int c = cs[i];
+            int prev = seenAt[c] - gen; // encoded index
+            if (prev >= start)
+                start = prev + 1;
+            seenAt[c] = i + gen;
+            int len = i - start + 1;
+            if (len > max)
+                max = len;
+        }
+        return max;
     }
 }
