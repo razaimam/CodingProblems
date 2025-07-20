@@ -9,7 +9,6 @@ import java.util.PriorityQueue;
 public class Solution {
     public static String caesarCipher(String s, int k) {
         k = k % 26;
-
        StringBuffer sb= new StringBuffer();
         for(char c: s.toCharArray()){
             if(Character.isUpperCase(c)) {
@@ -42,6 +41,15 @@ public class Solution {
         return 0;
     }
 
+    public static int lonelyIntegerWithXOR(List<Integer> a) {
+        int lonely = 0;
+        for (Integer num : a) {
+            lonely ^= num; // XOR operation
+        }
+        return lonely; // The result will be the lonely integer
+    }
+
+
     public static int cookies(int k, List<Integer> A) {
         PriorityQueue<Integer> minHeap = new PriorityQueue<>(A);
         int ops = 0;
@@ -64,6 +72,10 @@ public class Solution {
         List<Integer> numbers = List.of(1, 2, 3, 2, 1);
         int lonely = lonelyInteger(numbers);
         System.out.println("Lonely Integer: " + lonely); // 3
+
+        // Example usage of lonelyIntegerWithXOR
+        int lonelyXOR = lonelyIntegerWithXOR(numbers);
+        System.out.println("Lonely Integer with XOR: " + lonelyXOR); // 3
 
         // Example usage of cookies
         List<Integer> sweetness = List.of(1, 2, 3, 9, 10, 12);

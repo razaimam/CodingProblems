@@ -66,8 +66,11 @@ public class CacheTTL<K, V> {
         System.out.println("Size: " + cache.size()); // Output: 2
 
         // Test case 2: Entry expiration after TTL
-        Thread.sleep(2500); // Total wait: 3500ms > 3000ms TTL
+        Thread.sleep(2500); // Total wait: 3500ms > 3000ms TTL, only key 2 should remain.
         System.out.println("Get key 1 after TTL: " + cache.get(1)); // Output: null
+        System.out.println("Get key 2 after TTL: " + cache.get(2)); // Output: 2
+        System.out.println("Size after expiration: " + cache.size()); // Output: 1
+        Thread.sleep(500); // Wait for key 2 to expire
         System.out.println("Get key 2 after TTL: " + cache.get(2)); // Output: null
         System.out.println("Size after expiration: " + cache.size()); // Output: 0
 
