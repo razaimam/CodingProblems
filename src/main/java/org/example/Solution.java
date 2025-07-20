@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
 
 public class Solution {
     public static String caesarCipher(String s, int k) {
@@ -39,5 +40,34 @@ public class Solution {
             }
         }
         return 0;
+    }
+
+    public static int cookies(int k, List<Integer> A) {
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>(A);
+        int ops = 0;
+        while (minHeap.peek() < k && minHeap.size() >= 2) {
+            int least = minHeap.poll();
+            int second = minHeap.poll();
+            int combined = least + 2 * second;
+            minHeap.add(combined);
+            ops++;
+        }
+        return minHeap.peek() >= k ? ops : -1;
+    }
+
+    public static void main(String[] args) {
+        // Example usage of caesarCipher
+        String encrypted = caesarCipher("Hello, World!", 3);
+        System.out.println("Encrypted: " + encrypted); // Khoor, Zruog!
+
+        // Example usage of lonelyInteger
+        List<Integer> numbers = List.of(1, 2, 3, 2, 1);
+        int lonely = lonelyInteger(numbers);
+        System.out.println("Lonely Integer: " + lonely); // 3
+
+        // Example usage of cookies
+        List<Integer> sweetness = List.of(1, 2, 3, 9, 10, 12);
+        int ops = cookies(7, sweetness);
+        System.out.println("Operations needed: " + ops); // 2
     }
 }
