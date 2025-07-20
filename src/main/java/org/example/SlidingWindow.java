@@ -28,6 +28,15 @@ public class SlidingWindow {
         System.out.println("Length of longest substring without repeating characters in '" + s + "' is: " + length);
         // Output: 3 (substring "abc")
 
+        // Example usage of lengthOfLongestSubstringUsingArrayASCII
+        int lengthUsingArray = slidingWindow.lengthOfLongestSubstringUsingArrayASCII(s);
+        System.out.println("Length of longest substring using ASCII array in '" + s + "' is: " + lengthUsingArray);
+
+        // Example usage of lengthOfLongestSubstringWithoutFill
+        int lengthWithoutFill = slidingWindow.lengthOfLongestSubstringWithoutFill(s);
+        System.out.println("Length of longest substring without fill in '" + s + "' is: " + lengthWithoutFill);
+
+
 
     }
 
