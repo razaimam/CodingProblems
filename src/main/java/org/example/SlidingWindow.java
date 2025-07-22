@@ -36,7 +36,12 @@ public class SlidingWindow {
         int lengthWithoutFill = slidingWindow.lengthOfLongestSubstringWithoutFill(s);
         System.out.println("Length of longest substring without fill in '" + s + "' is: " + lengthWithoutFill);
 
-
+        // Example usage of minWindow
+        String s1 = "ADOBECODEBANC";
+        String t = "ABC";
+        String minWindow = slidingWindow.minWindow(s1, t);
+        System.out.println("Minimum window substring of '" + s1 + "' that contains all characters of '" + t + "' is: " + minWindow);
+        // Output: "BANC"
 
     }
 
@@ -138,14 +143,14 @@ public class SlidingWindow {
 
     public int lengthOfLongestSubstringUsingArrayASCII(String s) {
         int[] lastIndex = new int[128];
-        int maxLen = 0, start = 0;
+        int maxLen = 0, left = 0;
         Arrays.fill(lastIndex, -1);
-        for (int end = 0; end < s.length(); end++) {
-            char c = s.charAt(end);
+        for (int right = 0; right < s.length(); right++) {
+            char c = s.charAt(right);
             //int index =  Character.toUpperCase(c) - 'A';
-            start = Math.max(start, lastIndex[c] + 1);
-            maxLen = Math.max(maxLen, end - start + 1);
-            lastIndex[c] = end;
+            left = Math.max(left, lastIndex[c] + 1);
+            maxLen = Math.max(maxLen, right - left + 1);
+            lastIndex[c] = right;
         }
         return maxLen;
     }
@@ -173,5 +178,38 @@ public class SlidingWindow {
                 max = len;
         }
         return max;
+    }
+
+    /** * Returns the minimum window substring of s that contains all characters of t.
+     *
+     * @param s
+     * @param t
+     * @return
+     */
+    public String minWindow(String s, String t) {
+        if (s.length() == 0 || t.length() == 0) return "";
+        Map<Character, Integer> dictT = new HashMap<>();
+        for (char c : t.toCharArray()) dictT.put(c, dictT.getOrDefault(c, 0) + 1);
+        int required = dictT.size(), formed = 0;
+        Map<Character, Integer> windowCounts = new HashMap<>();
+        int left = 0, right = 0, ans[] = {-1, 0, 0};
+        while (right < s.length()) {
+            char c = s.charAt(right);
+            windowCounts.put(c, windowCounts.getOrDefault(c, 0) + 1);
+            if (dictT.containsKey(c) && windowCounts.get(c).intValue() == dictT.get(c).intValue()) formed++;
+            while (left <= right && formed == required) {
+                c = s.charAt(left);
+                if (ans[0] == -1 || right - left + 1 < ans[0]) {
+                    ans[0] = right - left + 1;
+                    ans[1] = left;
+                    ans[2] = right;
+                }
+                windowCounts.put(c, windowCounts.get(c) - 1);
+                if (dictT.containsKey(c) && windowCounts.get(c) < dictT.get(c)) formed--;
+                left++;
+            }
+            right++;
+        }
+        return ans[0] == -1 ? "" : s.substring(ans[1], ans[2] + 1);
     }
 }

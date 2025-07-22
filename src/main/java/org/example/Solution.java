@@ -81,5 +81,18 @@ public class Solution {
         List<Integer> sweetness = List.of(1, 2, 3, 9, 10, 12);
         int ops = cookies(7, sweetness);
         System.out.println("Operations needed: " + ops); // 2
+
+
+    }
+    public static int getMedian(List<Integer> arr) {
+        if (arr.isEmpty()) {
+            return 0; // or throw an exception
+        }
+        int n = arr.size();
+        if (n % 2 == 1) {
+            return arr.get(n / 2);
+        } else {
+            return (arr.get(n / 2 - 1) + arr.get(n / 2)) / 2;
+        }
     }
 }
