@@ -117,6 +117,12 @@ public class SlidingWindow {
     }
 
 
+    /**
+     * Returns the length of the longest substring without repeating characters.
+     * This implementation uses a sliding window approach with a hashmap to track character indices.
+     * Time Complexity: O(n), where n is the length of the string.
+     * Space Complexity: O(min(n, m)), where m is the size of the character set (e.g., 128 for ASCII).
+     */
     public int lengthOfLongestSubstring(String s) {
         // Track the max length of a substring without repeating characters found so far.
         int maxLength = 0;

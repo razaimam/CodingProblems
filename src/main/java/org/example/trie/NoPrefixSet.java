@@ -10,7 +10,7 @@ import java.util.List;
  * Time Complexity: O(n * m), where n is the number of words and m is the average length of the words.
  * Space Complexity: O(n * m) for the trie structure.
  */
-public class Trie {
+public class NoPrefixSet {
     /*
      * Complete the 'noPrefix' function below.
      *

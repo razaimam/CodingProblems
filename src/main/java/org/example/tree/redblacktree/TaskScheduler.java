@@ -1,4 +1,4 @@
-package org.example;
+package org.example.tree.redblacktree;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -55,6 +55,14 @@ class Task implements  Comparable<Task> {
     }
 }
 
+    /* * TaskScheduler class that uses TreeMap to schedule tasks based on their due dates.
+     * The TreeMap will automatically sort the tasks by their due dates.
+     * The getNextTask method retrieves the task with the earliest due date.
+     * Time Complexity: O(log n) for insertion and retrieval.
+     * Space Complexity: O(n) for storing tasks in the TreeMap.
+     *
+     * minHeap is used to efficiently manage the tasks based on their due dates.
+     */
     public class TaskScheduler {
 
         TreeMap<Task, String> scheduler = new TreeMap<>();
