@@ -1,4 +1,4 @@
-package org.example;
+package org.example.slidingwindow;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -45,6 +45,12 @@ public class SlidingWindow {
 
     }
 
+
+    /* Returns the maximum sum of a contiguous subarray of length k.
+     * If k is greater than the length of the array, returns 0.
+     * Time Complexity: O(n), where n is the length of the array.
+     * Space Complexity: O(1), as we are using only a constant amount of space.
+     */
     public int maxSumSubArray(int[] arr, int k) {
         int maxSum = 0, windowSum = 0;
         for (int i = 0; i < k; i++) {
@@ -61,6 +67,8 @@ public class SlidingWindow {
     /**
      * Returns the maximum sum of any length-k subarray whose elements are all distinct.
      * If no such subarray exists, returns 0.
+     * Time Complexity: O(n), where n is the length of the array.
+     * Space Complexity: O(n), for the hashmap to track last seen indices.
      */
     public long maxSubArrayDistinctSum(int[] nums, int k) {
         if (k <= 0 || nums == null || nums.length < k) {
@@ -141,6 +149,11 @@ public class SlidingWindow {
         return maxLength;
     }
 
+    /**
+     * Returns the length of the longest substring without repeating characters using an array for ASCII characters.
+     * Time Complexity: O(n), where n is the length of the string.
+     * Space Complexity: O(1), since the array size is fixed at 128 for ASCII characters.
+     */
     public int lengthOfLongestSubstringUsingArrayASCII(String s) {
         int[] lastIndex = new int[128];
         int maxLen = 0, left = 0;
@@ -155,7 +168,12 @@ public class SlidingWindow {
         return maxLen;
     }
 
-
+    /**
+     * Returns the length of the longest substring without repeating characters.
+     * This version uses a generation counter to avoid filling the seenAt array.
+     * Time Complexity: O(n), where n is the length of the string.
+     * Space Complexity: O(1), since we use a fixed-size array for ASCII characters.
+     */
     public int lengthOfLongestSubstringWithoutFill(String s) {
         final int[] seenAt = new int[128];
         int gen = 1;
@@ -180,11 +198,11 @@ public class SlidingWindow {
         return max;
     }
 
-    /** * Returns the minimum window substring of s that contains all characters of t.
-     *
-     * @param s
-     * @param t
-     * @return
+   /**
+     * Returns the minimum window substring of 's' that contains all characters of 't'.
+     * If no such substring exists, returns an empty string.
+     * Time Complexity: O(n + m), where n is the length of s and m is the length of t.
+     * Space Complexity: O(m), for the hashmap to track character counts in t.
      */
     public String minWindow(String s, String t) {
         if (s.length() == 0 || t.length() == 0) return "";

@@ -1,7 +1,15 @@
-package org.example;
+package org.example.trie;
 
 import java.util.List;
 
+/**
+ * Trie implementation to check for prefix conditions in a list of words.
+ * The function noPrefix checks if any word is a prefix of another word in the list.
+ * If it finds such a case, it prints "BAD SET" followed by the offending word.
+ * If no prefixes are found, it prints "GOOD SET".
+ * Time Complexity: O(n * m), where n is the number of words and m is the average length of the words.
+ * Space Complexity: O(n * m) for the trie structure.
+ */
 public class Trie {
     /*
      * Complete the 'noPrefix' function below.

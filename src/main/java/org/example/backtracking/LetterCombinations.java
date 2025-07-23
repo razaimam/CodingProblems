@@ -1,8 +1,16 @@
-package org.example;
+package org.example.backtracking;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could
+ * represent.
+ * This problem is typically solved using backtracking, as it involves exploring all combinations of letters that can be
+ * formed from the given digits.
+ * Time Complexity: O(4^n), where n is the length of the input string. Each digit can map to 3 or 4 letters, leading to
+ * Space Complexity: O(n) for the recursion stack and the result list.
+ */
 public class LetterCombinations {
     private static final String[] KEYPAD = {
             "",    // 0
@@ -16,6 +24,12 @@ public class LetterCombinations {
             "tuv", // 8
             "wxyz" // 9
     };
+
+    public static void main(String[] args) {
+        LetterCombinations lc = new LetterCombinations();
+        System.out.println(lc.letterCombinations("23"));
+        // Output: [ad, ae, af, bd, be, bf, cd, ce, cf]
+    }
 
     public List<String> letterCombinations(String digits) {
         List<String> result = new ArrayList<>();
@@ -36,11 +50,5 @@ public class LetterCombinations {
             backtrack(result, current, digits, index + 1);
             current.deleteCharAt(current.length() - 1); // backtrack
         }
-    }
-
-    public static void main(String[] args) {
-        LetterCombinations lc = new LetterCombinations();
-        System.out.println(lc.letterCombinations("23"));
-        // Output: [ad, ae, af, bd, be, bf, cd, ce, cf]
     }
 }

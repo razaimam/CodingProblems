@@ -1,4 +1,4 @@
-package org.example;
+package org.example.cache;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

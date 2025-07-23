@@ -1,8 +1,15 @@
-package org.example;
+package org.example.trie;
 
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * TrieSearchWord implements a Trie data structure to support word insertion, search, and prefix checking.
+ * It allows for efficient storage and retrieval of strings, making it suitable for applications like autocomplete.
+ * Time Complexity: O(m) for insert, search, and startsWith operations, where m is the length of the word or prefix.
+ * Space Complexity: O(n * m) where n is the number of words and m is the average length of the words.
+ *
+ */
 public class TrieSearchWord {
 
     class TrieNode {
