@@ -10,7 +10,21 @@ import java.util.List;
  * formed from the given digits.
  * Time Complexity: O(4^n), where n is the length of the input string. Each digit can map to 3 or 4 letters, leading to
  * Space Complexity: O(n) for the recursion stack and the result list.
+ * <p>
+ * Recursion Tree for digits "23":
+ * <p>
+ *     "" (start)
+ *    /    |    \
+ *   a      b      c      <- letters from digit "2"
+ *  /|\    /|\    /|\
+ * d e f  d e f  d e f    <- letters from digit "3"
+ * <p>
+ * Explanation:
+ * - First choose one letter from "2" (a, b, or c).
+ * - Then for each choice, combine it with every letter from "3" (d, e, f).
+ * - Final combinations: ad, ae, af, bd, be, bf, cd, ce, cf.
  */
+
 public class LetterCombinations {
     private static final String[] KEYPAD = {
             "",    // 0
