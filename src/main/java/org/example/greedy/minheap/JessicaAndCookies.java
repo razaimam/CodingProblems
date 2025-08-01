@@ -28,7 +28,7 @@ public class JessicaAndCookies {
             minHeap.add(combined);
             ops++;
         }
-        return minHeap.peek() >= k ? ops : -1;
+        return !minHeap.isEmpty() && minHeap.peek() >= k ? ops : -1;
     }
 
     public static void main(String[] args) {
