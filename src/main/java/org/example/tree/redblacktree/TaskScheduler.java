@@ -71,9 +71,12 @@ class Task implements  Comparable<Task> {
             scheduler.put(task, task.getTitle());
         }
 
-        public Task getNextTask(){
-
+        public Task getNextTask() {
+            if (scheduler.isEmpty()) {
+                return null; // or throw a custom exception
+            }
             return scheduler.firstKey();
+        }
 
         }
 
