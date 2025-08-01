@@ -8,7 +8,7 @@ import java.util.List;
  * represent.
  * This problem is typically solved using backtracking, as it involves exploring all combinations of letters that can be
  * formed from the given digits.
- * Time Complexity: O(4^n), where n is the length of the input string. Each digit can map to 3 or 4 letters, leading to
+ * Time Complexity: O(4^n), where n is the length of the input string. Each digit can map to 3 or 4 letters, leading to an exponential number of combinations.
  * Space Complexity: O(n) for the recursion stack and the result list.
  * <p>
  * Recursion Tree for digits "23":
