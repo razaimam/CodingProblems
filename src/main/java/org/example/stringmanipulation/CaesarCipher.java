@@ -4,6 +4,9 @@ public class CaesarCipher {
     public static String encrypt(String text, int shift) {
         StringBuilder result = new StringBuilder();
 
+        // Normalize shift to be within 0-25 range
+        shift = ((shift % 26) + 26) % 26;
+
         for (char c : text.toCharArray()) {
             if (Character.isLetter(c)) {
                 char base = Character.isLowerCase(c) ? 'a' : 'A';
