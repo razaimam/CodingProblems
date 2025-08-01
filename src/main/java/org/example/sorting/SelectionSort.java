@@ -10,7 +10,17 @@ package org.example.sorting;
  */
 public class SelectionSort {
 
+    /**
+     * Sorts the given array using selection sort algorithm.
+     * Note: This method modifies the input array in place.
+     * 
+     * @param arr the array to be sorted
+     * @return the same array reference after sorting
+     */
     public static int[] selectionSort(int[] arr) {
+        if (arr == null || arr.length <= 1) {
+            return arr;
+        }
         int n = arr.length;
         for (int i = 0; i < n - 1; i++) {
             // Find the index of the minimum element in the unsorted part
