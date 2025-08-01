@@ -14,15 +14,15 @@ public class MathsOperations {
 
     }
 
-    public static int getMedian(List<Integer> arr) {
+    public static double getMedian(List<Integer> arr) {
         if (arr.isEmpty()) {
-            return 0; // or throw an exception
+            throw new IllegalArgumentException("Cannot calculate median of empty list");
         }
         int n = arr.size();
         if (n % 2 == 1) {
             return arr.get(n / 2);
         } else {
-            return (arr.get(n / 2 - 1) + arr.get(n / 2)) / 2;
+            return (arr.get(n / 2 - 1) + arr.get(n / 2)) / 2.0;
         }
     }
 }
