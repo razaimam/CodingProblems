@@ -76,6 +76,12 @@ public class HuffmanCoding {
     private static void generateCodes(HuffmanNode root, String code, Map<Character, String> codeMap) {
         if (root == null) return;
 
+        // Special case: if root is a leaf (single character), assign "0" as code
+        if (root.left == null && root.right == null && code.isEmpty()) {
+            codeMap.put(root.c, "0");
+            return;
+        }
+
         if (root.left == null && root.right == null) {
             codeMap.put(root.c, code);
         }
