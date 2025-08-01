@@ -16,6 +16,9 @@ import java.util.PriorityQueue;
 public class JessicaAndCookies {
 
     public static int cookies(int k, List<Integer> A) {
+        if (A == null || A.isEmpty()) {
+            return -1;
+        }
         PriorityQueue<Integer> minHeap = new PriorityQueue<>(A);
         int ops = 0;
         while (minHeap.peek() < k && minHeap.size() >= 2) {
