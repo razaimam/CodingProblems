@@ -52,17 +52,18 @@ public class LetterCombinations {
         return result;
     }
 
-    private void backtrack(List<String> result, StringBuilder current, String digits, int index) {
-        if (index == digits.length()) {
-            result.add(current.toString());
-            return;
-        }
+ public List<String> letterCombinations(String digits) {
+     List<String> result = new ArrayList<>();
+     if (digits == null || digits.length() == 0) return result;
 
-        String letters = KEYPAD[digits.charAt(index) - '0'];
-        for (char c : letters.toCharArray()) {
-            current.append(c);
-            backtrack(result, current, digits, index + 1);
-            current.deleteCharAt(current.length() - 1); // backtrack
-        }
-    }
+     // Validate input contains only digits 2-9
+     for (char c : digits.toCharArray()) {
+         if (c < '2' || c > '9') {
+             throw new IllegalArgumentException("Input must contain only digits 2-9");
+         }
+     }
+
+     backtrack(result, new StringBuilder(), digits, 0);
+     return result;
+ }
 }
