@@ -10,9 +10,14 @@ package org.example.dynamicprogramming;
 public class Fibonacci {
 
     public static int fibonacci(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException("n must be non-negative");
+        }
         if (n <= 1) {
             return n;
         }
+        // …rest of the implementation…
+    }
         int[] fib = new int[n + 1];
         fib[0] = 0;
         fib[1] = 1;
