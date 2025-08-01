@@ -10,7 +10,17 @@ package org.example.sorting;
  * Space Complexity: O(1) since it sorts the array in place.
  */
 public class BubbleSort {
+    /**
+     * Sorts the given array using bubble sort algorithm.
+     * Note: This method modifies the input array in-place.
+     *
+     * @param arr the array to be sorted
+     * @return the same array reference after sorting
+     */
     public static int[] bubbleSort(int[] arr) {
+        if (arr == null || arr.length <= 1) {
+            return arr;
+        }
         int n = arr.length;
         boolean swapped;
         do {
