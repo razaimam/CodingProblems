@@ -21,7 +21,7 @@ public class JessicaAndCookies {
         }
         PriorityQueue<Integer> minHeap = new PriorityQueue<>(A);
         int ops = 0;
-        while (minHeap.peek() < k && minHeap.size() >= 2) {
+        while (!minHeap.isEmpty() && minHeap.peek() < k && minHeap.size() >= 2) {
             int least = minHeap.poll();
             int second = minHeap.poll();
             int combined = least + 2 * second;
