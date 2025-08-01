@@ -136,7 +136,9 @@ public class SlidingWindow {
         // Expand the window character by character using 'right'.
         for (int right = 0; right < s.length(); right++) {
             char c = s.charAt(right);
-            Character.toUpperCase(c);
+         for (int right = 0; right < s.length(); right++) {
+             char c = s.charAt(right);
+             // If we've seen this character before *and* it's inside the current window,
             // If we've seen this character before *and* it's inside the current window,
             // move 'left' just past its previous occurrence so the window becomes distinct again.
             if (charToIndex.containsKey(c)) {
