@@ -16,8 +16,7 @@ public class Fibonacci {
         if (n <= 1) {
             return n;
         }
-        // …rest of the implementation…
-    }
+
         int[] fib = new int[n + 1];
         fib[0] = 0;
         fib[1] = 1;

@@ -48,22 +48,29 @@ public class LetterCombinations {
     public List<String> letterCombinations(String digits) {
         List<String> result = new ArrayList<>();
         if (digits == null || digits.length() == 0) return result;
+
+        // Optional input validation
+        for (char c : digits.toCharArray()) {
+            if (c < '2' || c > '9') {
+                throw new IllegalArgumentException("Input must contain only digits 2-9");
+            }
+        }
+
         backtrack(result, new StringBuilder(), digits, 0);
         return result;
     }
 
- public List<String> letterCombinations(String digits) {
-     List<String> result = new ArrayList<>();
-     if (digits == null || digits.length() == 0) return result;
+    private void backtrack(List<String> result, StringBuilder current, String digits, int index) {
+        if (index == digits.length()) {
+            result.add(current.toString());
+            return;
+        }
 
-     // Validate input contains only digits 2-9
-     for (char c : digits.toCharArray()) {
-         if (c < '2' || c > '9') {
-             throw new IllegalArgumentException("Input must contain only digits 2-9");
-         }
-     }
-
-     backtrack(result, new StringBuilder(), digits, 0);
-     return result;
- }
+        String possibleLetters = KEYPAD[digits.charAt(index) - '0'];
+        for (char c : possibleLetters.toCharArray()) {
+            current.append(c);
+            backtrack(result, current, digits, index + 1);
+            current.deleteCharAt(current.length() - 1); // backtrack
+        }
+    }
 }

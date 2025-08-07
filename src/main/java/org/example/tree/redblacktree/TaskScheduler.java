@@ -78,7 +78,7 @@ class Task implements  Comparable<Task> {
             return scheduler.firstKey();
         }
 
-        }
+
 
         public static void main(String[] args) {
             TaskScheduler scheduler = new TaskScheduler();
